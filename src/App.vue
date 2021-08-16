@@ -1,19 +1,17 @@
 <template>
-
+  <div id="app">
+    <Puzzles />
+  </div>
 </template>
-
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Puzzles from './components/Puzzles'
 export default {
-  name: "App",
-  components: {
-  },
-};
+  name: 'App',
+  components: { Puzzles },
+}
 </script>
 
 <style>
 #app {
-  
 }
 </style>

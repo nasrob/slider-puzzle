@@ -80,17 +80,17 @@ export default {
         this.indexesToSwap.push(index)
       }
       if (this.indexesToSwap.length === 2) {
-        const [index1, index2] = this.indexesToSwap;
-        [(this.shuffledPuzzleArray[index1], this.shuffledPuzzleArray[index2])] = [
-          this.shuffledPuzzleArray[index2],
-          this.shuffledPuzzleArray[index1],
-        ]
+        const [index1, index2] = this.indexesToSwap
+        ;[this.shuffledPuzzleArray[index1], this.shuffledPuzzleArray[index2]] =
+          [this.shuffledPuzzleArray[index2], this.shuffledPuzzleArray[index1]]
         this.indexesToSwap = []
       }
     },
     start() {
       this.resetTime()
-      this.shuffledPuzzleArray = [...correctPuzzleArray].sort(() => Math.random - 0.5)
+      this.shuffledPuzzleArray = [...correctPuzzleArray].sort(
+        () => Math.random - 0.5,
+      )
       this.indexesToSwap = []
       this.timer = setInterval(() => {
         this.currentDateTime = new Date()
@@ -109,14 +109,15 @@ export default {
       this.currentDateTime = new Date()
     },
     recordSpeedRecords() {
-      let records = JSON.parse(localStorage.getItem('records')) || [];
+      let records = JSON.parse(localStorage.getItem('records')) || []
       const { elapsedTime, elapsedDiff } = this
       records.push({ elapsedTime, elapsedDiff })
-      const sortedRecords = records.sort((a, b) => a.elapsedDiff - b.elapsedDiff)
-          .slice(0, 10)
+      const sortedRecords = records
+        .sort((a, b) => a.elapsedDiff - b.elapsedDiff)
+        .slice(0, 10)
       const stringifiedRecords = JSON.stringify(sortedRecords)
       localStorage.setItem('records', stringifiedRecords)
-    }
+    },
   },
 }
 </script>
